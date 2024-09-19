@@ -1,6 +1,6 @@
 import { Provider } from "ethers";
 import { CommandContext, Options } from "../core/ai-agent.interfaces.js";
-import { ChainAiService } from "../core/ai-agent.service.js";
+import { AiAgentService } from "../core/ai-agent.service.js";
 import { logger } from "../utils/logger.js";
 import { Output } from "../lib/interfaces/httpEnums.js";
 
@@ -25,11 +25,11 @@ export const generateResponse = async (
   provider: Provider
 ): Promise<Output> => {
   try {
-    const chainAiService = new ChainAiService(options, provider);
+    const AiAgentService = new AiAgentService(options, provider);
 
     let context: CommandContext[] = [];
 
-    const [jsonResponse, updatedContext] = await chainAiService.processCommand(
+    const [jsonResponse, updatedContext] = await AiAgentService.processCommand(
       query,
       context
     );

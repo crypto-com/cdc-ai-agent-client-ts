@@ -24,11 +24,11 @@ import {
 } from "./constants/ai-agent.constants.js";
 
 /**
- * ChainAiService class handles Chain AI operations.
+ * AiAgentService class handles Chain AI operations.
  *
- * @class ChainAiService
+ * @class AiAgentService
  */
-export class ChainAiService {
+export class AiAgentService {
   private options: Options;
   private provider: Provider;
   private client: OpenAI;
@@ -49,7 +49,7 @@ export class ChainAiService {
    * @param command - The user's command (e.g., "get balance").
    * @param context - The conversation context.
    * @returns - A Promise resolving to a tuple with the command result and updated context.
-   * @memberof ChainAiService
+   * @memberof AiAgentService
    */
   public async processCommand(
     command: string,
@@ -108,7 +108,7 @@ export class ChainAiService {
    * @param functionName - The blockchain function to execute.
    * @param functionArgs - The arguments required for the function.
    * @returns - A Promise resolving to the blockchain function response.
-   * @memberof ChainAiService
+   * @memberof AiAgentService
    */
   private async executeFunction(
     functionName: string,
@@ -184,7 +184,7 @@ export class ChainAiService {
    * @param command - The user's command.
    * @param response - The AI's response.
    * @returns - The updated context.
-   * @memberof ChainAiService
+   * @memberof AiAgentService
    */
   private updateContext(
     context: CommandContext[],
