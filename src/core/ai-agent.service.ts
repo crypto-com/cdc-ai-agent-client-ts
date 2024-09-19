@@ -1,4 +1,4 @@
-import { OpenAI } from 'openai';
+import { OpenAI } from "openai";
 import {
   AIMessageResponse,
   CommandContext,
@@ -6,18 +6,22 @@ import {
   FunctionArgs,
   Options,
   Role,
-} from './chain-ai.interfaces.js';
-import { BlockchainService } from './blockchain/blockchain.service.js';
-import { Provider } from 'ethers';
+} from "./ai-agent.interfaces.js";
+import { BlockchainService } from "./blockchain/blockchain.service.js";
+import { Provider } from "ethers";
 import {
   BlockchainFunction,
   BlockchainFunctionResponse,
   BlockchainFunctionType,
   Status,
-} from './blockchain/blockchain.interfaces.js';
-import { ChatCompletionMessageParam } from 'openai/resources/index.js';
-import { logger } from '../utils/logger.js';
-import { CONTENT, RESULT_PLACEHOLDER, TOOLS } from './constants/chain-ai.constants.js';
+} from "./blockchain/blockchain.interfaces.js";
+import { ChatCompletionMessageParam } from "openai/resources/index.js";
+import { logger } from "../utils/logger.js";
+import {
+  CONTENT,
+  RESULT_PLACEHOLDER,
+  TOOLS,
+} from "./constants/ai-agent.constants.js";
 
 /**
  * ChainAiService class handles Chain AI operations.
@@ -47,7 +51,10 @@ export class ChainAiService {
    * @returns - A Promise resolving to a tuple with the command result and updated context.
    * @memberof ChainAiService
    */
-  public async processCommand(command: string, context: CommandContext[]): Promise<[CommandResult, CommandContext[]]> {
+  public async processCommand(
+    command: string,
+    context: CommandContext[]
+  ): Promise<[CommandResult, CommandContext[]]> {
     const messages: Array<ChatCompletionMessageParam> = [
       {
         role: Role.System,
@@ -58,10 +65,10 @@ export class ChainAiService {
     ];
 
     const response = await this.client.chat.completions.create({
-      model: 'gpt-4',
+      model: "gpt-4",
       messages: messages,
       tools: TOOLS,
-      tool_choice: 'auto',
+      tool_choice: "auto",
     });
 
     const aiMessage = response.choices[0].message as AIMessageResponse;
@@ -71,7 +78,10 @@ export class ChainAiService {
       for (const toolCall of aiMessage.tool_calls) {
         const functionCall = toolCall.function;
         const functionArgs = JSON.parse(functionCall.arguments);
-        const functionResult = await this.executeFunction(functionCall.name, functionArgs);
+        const functionResult = await this.executeFunction(
+          functionCall.name,
+          functionArgs
+        );
         result = { ...result, ...functionResult };
 
         if (functionResult.message) {
@@ -104,16 +114,24 @@ export class ChainAiService {
     functionName: string,
     functionArgs: FunctionArgs
   ): Promise<BlockchainFunctionResponse<BlockchainFunctionType>> {
-    const blockchainService = new BlockchainService(this.options, this.provider);
+    const blockchainService = new BlockchainService(
+      this.options,
+      this.provider
+    );
 
     try {
       switch (functionName) {
         case BlockchainFunction.SendTransaction:
-          return await blockchainService.sendTransaction(functionArgs.toAddress, functionArgs.amount);
+          return await blockchainService.sendTransaction(
+            functionArgs.toAddress,
+            functionArgs.amount
+          );
         case BlockchainFunction.ListWallets:
           return await blockchainService.listWallets();
         case BlockchainFunction.GetBalance:
-          return await blockchainService.getBalance(functionArgs.walletAddresses);
+          return await blockchainService.getBalance(
+            functionArgs.walletAddresses
+          );
         case BlockchainFunction.GetLatestBlock:
           return await blockchainService.getLatestBlock();
         case BlockchainFunction.GetTransactionsByAddress:
@@ -125,19 +143,37 @@ export class ChainAiService {
         case BlockchainFunction.GetContractABI:
           return await blockchainService.getContractABI(functionArgs.address);
         case BlockchainFunction.GetTransactionByHash:
-          return await blockchainService.getTransactionByHash(functionArgs.txHash);
+          return await blockchainService.getTransactionByHash(
+            functionArgs.txHash
+          );
         case BlockchainFunction.GetBlocksByNumber:
-          return await blockchainService.getBlocksByNumber(functionArgs.blockNumbers, functionArgs.txDetail);
+          return await blockchainService.getBlocksByNumber(
+            functionArgs.blockNumbers,
+            functionArgs.txDetail
+          );
         case BlockchainFunction.GetTransactionStatus:
-          return await blockchainService.getTransactionStatus(functionArgs.txHash);
+          return await blockchainService.getTransactionStatus(
+            functionArgs.txHash
+          );
         case BlockchainFunction.CreateWallet:
           return blockchainService.createWallet();
         default:
-          return { status: Status.Failed, action: 'actionFailed', message: `Unknown function: ${functionName}` };
+          return {
+            status: Status.Failed,
+            action: "actionFailed",
+            message: `Unknown function: ${functionName}`,
+          };
       }
     } catch (e) {
-      logger.error(`[ChainAiProcessor/executeFunction] error: Error executing function ${functionName}:`, e);
-      return { status: Status.Failed, action: 'actionFailed', message: `Failed to execute ${functionName}: ${e}` };
+      logger.error(
+        `[ChainAiProcessor/executeFunction] error: Error executing function ${functionName}:`,
+        e
+      );
+      return {
+        status: Status.Failed,
+        action: "actionFailed",
+        message: `Failed to execute ${functionName}: ${e}`,
+      };
     }
   }
 
@@ -150,7 +186,11 @@ export class ChainAiService {
    * @returns - The updated context.
    * @memberof ChainAiService
    */
-  private updateContext(context: CommandContext[], command: string, response: string): CommandContext[] {
+  private updateContext(
+    context: CommandContext[],
+    command: string,
+    response: string
+  ): CommandContext[] {
     context.push({ role: Role.User, content: command });
     context.push({ role: Role.Assistant, content: response });
     if (context.length > 10) context.shift();

@@ -1,6 +1,6 @@
 import { Provider } from "ethers";
-import { CommandContext, Options } from "../core/chain-ai.interfaces.js";
-import { ChainAiService } from "../core/chain-ai.service.js";
+import { CommandContext, Options } from "../core/ai-agent.interfaces.js";
+import { ChainAiService } from "../core/ai-agent.service.js";
 import { logger } from "../utils/logger.js";
 import { Output } from "../lib/interfaces/httpEnums.js";
 

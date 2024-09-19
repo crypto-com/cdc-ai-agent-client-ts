@@ -1,5 +1,5 @@
 import { ethers, Provider, TransactionRequest } from "ethers";
-import { Options } from "../chain-ai.interfaces.js";
+import { Options } from "../ai-agent.interfaces.js";
 import { GLOBAL_CONTEXT } from "./blockchain.constants.js";
 import {
   BlockchainFunction,
