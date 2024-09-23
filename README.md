@@ -2,6 +2,8 @@
 
 The CDC AI Agent Client is a TypeScript/JavaScript library designed to facilitate easy and efficient interactions with the CDC AI Agent Service API. This client library provides methods to send queries and fetch responses from the CCDC AI Agent Service seamlessly.
 
+![npm](https://img.shields.io/npm/v/@crypto.com/ai-agent-client)
+
 ## Features
 
 - Simple and intuitive API for interacting with the CDC AI Agent.
