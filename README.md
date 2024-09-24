@@ -40,9 +40,6 @@ const client = createClient({
     url: 'EXPLORER_API_URL',
     apiKey: 'EXPLORER_API_KEY',
   },
-  wallet: {
-    mnemonic: 'YOUR_WALLET_MNEMONIC',
-  },
 });
 ```
 
