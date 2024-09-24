@@ -1,4 +1,4 @@
-# CDC AI Agent Client
+# Crypto.com AI Agent Client
 
 The CDC AI Agent Client is a TypeScript/JavaScript library designed to facilitate easy and efficient interactions with the CDC AI Agent Service API. This client library provides methods to send queries and fetch responses from the CCDC AI Agent Service seamlessly.
 
@@ -9,6 +9,7 @@ The CDC AI Agent Client is a TypeScript/JavaScript library designed to facilitat
 - Simple and intuitive API for interacting with the CDC AI Agent.
 - Supports sending queries and receiving AI-generated responses.
 - Configurable client instances tailored to your specific endpoint and security needs.
+- **Currently in betay**: Expect frequent updates and potential changes in future releases.
 
 ## Installation
 
@@ -32,7 +33,7 @@ const client = createClient({
     apiKey: 'YOUR_OPEN_AI_API_KEY',
   },
   chain: {
-    id: 282, // Chain ID for Cronos ZkEVM Testnet
+    id: 'CHAIN_ID', // e.g. 282 for the Cronos ZkEVM Testnet
     name: 'CHAIN_NAME',
     rpc: 'CHAIN_RPC_URL',
   },
@@ -49,7 +50,7 @@ const client = createClient({
 const sendQuery = async (query) => {
   try {
     const response = await client.agent.generateQuery(query);
-    console.log('CDC AI Agent Response:', response);
+    console.log('Crypto.com AI Agent Response:', response);
   } catch (error) {
     console.error('Error sending query:', error);
   }
