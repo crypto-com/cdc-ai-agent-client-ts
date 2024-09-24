@@ -50,7 +50,6 @@ export interface ClientConfig {
 
   /** Configuration for blockchain explorer API access */
   explorer: {
-    url: string;
     apiKey: string;
   };
 }
