@@ -75,9 +75,6 @@ export interface ClientConfig {
  *     url: 'EXPLORER_API_URL',
  *     apiKey: 'EXPLORER_API_KEY',
  *   },
- *   wallet: {
- *     mnemonic: 'YOUR_WALLET_MNEMONIC',
- *   }
  * });
  * async function sendQuery() {
  *   try {
