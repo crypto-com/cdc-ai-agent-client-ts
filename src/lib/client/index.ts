@@ -34,7 +34,6 @@ export type Query = {
  * @property {object} openAI - Configuration for OpenAI API access, including the API key.
  * @property {object} chain - Configuration for blockchain specifics such as chain ID, name, and RPC URL.
  * @property {object} explorer - Configuration for blockchain explorer API access, including the base URL and API key.
- * @property {object} wallet - Configuration for wallet settings, specifically the mnemonic.
  */
 export interface ClientConfig {
   /** Configuration for OpenAI API access */
@@ -53,11 +52,6 @@ export interface ClientConfig {
   explorer: {
     url: string;
     apiKey: string;
-  };
-
-  /** Configuration for wallet access */
-  wallet: {
-    mnemonic: string;
   };
 }
 
@@ -95,8 +89,8 @@ export interface ClientConfig {
  * }
  * sendQuery();
  */
-export const createClient = ({ openAI, chain, explorer, wallet }: ClientConfig): CdcAiAgentClient => {
-  const options: ClientConfig = { openAI, chain, explorer, wallet };
+export const createClient = ({ openAI, chain, explorer }: ClientConfig): CdcAiAgentClient => {
+  const options: ClientConfig = { openAI, chain, explorer };
 
   return {
     agent: {
