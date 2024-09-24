@@ -1,5 +1,5 @@
 {
-  "name": "@cdc/chain-ai-client",
+  "name": "@rarcifa/chain-ai-client",
   "version": "0.2.9",
   "private": false,
   "main": "dist/index.js",

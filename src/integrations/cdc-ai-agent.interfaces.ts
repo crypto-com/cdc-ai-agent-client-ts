@@ -1,7 +1,15 @@
 export interface CdcAiAgentResponse {
-  action: string;
-  message: string;
-  data: object;
+  status: Status;
+  result: {
+    action: string;
+    message: string;
+    data: object;
+  };
+}
+
+export enum Status {
+  Success = 'Success',
+  Failed = 'Failed',
 }
 
 export type FetchOptions = {
