@@ -1,12 +1,12 @@
 # Crypto.com AI Agent Client
 
-The CDC AI Agent Client is a TypeScript/JavaScript library designed to facilitate easy and efficient interactions with the CDC AI Agent Service API. This client library provides methods to send queries and fetch responses from the CCDC AI Agent Service seamlessly.
+The Crypto.com AI Agent Client is a TypeScript/JavaScript library designed to facilitate easy and efficient interactions with the Crypto.com AI Agent Service API. This client library provides methods to send queries and fetch responses from the Crypto.com AI Agent Service seamlessly.
 
 ![npm](https://img.shields.io/npm/v/@crypto.com/ai-agent-client)
 
 ## Features
 
-- Simple and intuitive API for interacting with the CDC AI Agent.
+- Simple and intuitive API for interacting with the Crypto.com AI Agent.
 - Supports sending queries and receiving AI-generated responses.
 - Configurable client instances tailored to your specific endpoint and security needs.
 - **Currently in betay**: Expect frequent updates and potential changes in future releases.
@@ -21,7 +21,7 @@ npm install @crypto.com/ai-agent-client
 
 ## Usage
 
-Here’s how you can use the CDC AI Agent Client in your project:
+Here’s how you can use the Crypto.com AI Agent Client in your project:
 
 ### Configuring the Client
 
@@ -61,7 +61,7 @@ const sendQuery = async (query) => {
 
 ### Client Methods
 
-- `generateQuery(query)`: Generates a query that is send to the CDC AI Agent Service and returns a response.
+- `generateQuery(query)`: Generates a query that is send to the Crypto.com AI Agent Service and returns a response.
 
 ## Licensing
 
