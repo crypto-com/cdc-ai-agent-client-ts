@@ -20,7 +20,7 @@
   },
   "author": "rarcifa@gmail.com",
   "license": "MIT",
-  "description": "A Node.js client library for interacting with the Chain AI Client.",
+  "description": "A typescript client to interact with the crypto.com AI agent service",
   "keywords": [
     "AI",
     "LLM",
