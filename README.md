@@ -1,6 +1,6 @@
-# Crypto.com AI Agent Client
+# Crypto.com AI Agent Client (Ts)
 
-The Crypto.com AI Agent Client is a TypeScript/JavaScript library designed to facilitate easy and efficient interactions with the Crypto.com AI Agent Service API. This client library provides methods to send queries and fetch responses from the Crypto.com AI Agent Service seamlessly.
+The Crypto.com AI Agent Client (Ts) is a TypeScript/JavaScript library designed to facilitate easy and efficient interactions with the Crypto.com AI Agent Service API. This client library provides methods to send queries and fetch responses from the Crypto.com AI Agent Service seamlessly.
 
 ![npm](https://img.shields.io/npm/v/@crypto.com/ai-agent-client)
 
