@@ -9,7 +9,7 @@ The Crypto.com AI Agent Client.ts is a TypeScript/JavaScript library designed to
 - Simple and intuitive API for interacting with the Crypto.com AI Agent.
 - Supports sending queries and receiving AI-generated responses.
 - Configurable client instances tailored to your specific endpoint and security needs.
-- **Currently in betay**: Expect frequent updates and potential changes in future releases.
+- **Currently in beta**: Expect frequent updates and potential changes in future releases.
 
 ## Installation
 
