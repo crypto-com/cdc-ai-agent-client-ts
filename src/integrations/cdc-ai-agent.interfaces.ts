@@ -3,6 +3,7 @@ export interface CdcAiAgentResponse {
   message?: string;
   hasErrors?: boolean;
   result?: Result;
+  context?: QueryContext[];
 }
 
 export type Result = {
