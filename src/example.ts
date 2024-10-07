@@ -11,7 +11,7 @@ const CRONOS_ZKEVM_TESTNET_API_KEY = '';
 // Function to send a query and log the response
 async function sendQuery(query: string) {
   // Create client params
-  const clientParams: QueryOptions = {
+  const queryOptions: QueryOptions = {
     openAI: {
       apiKey: OPEN_AI_API_KEY,
       model: 'gpt-4o',
@@ -23,12 +23,13 @@ async function sendQuery(query: string) {
       cronosZkEvmKey: CRONOS_ZKEVM_API_KEY,
       cronosZkEvmTestnetKey: CRONOS_ZKEVM_TESTNET_API_KEY,
     },
+    context: [],
     // signerAppUrl: 'https://my-signer-app', // Refer to: https://github.com/crypto-com/cdc-ai-agent-signer-app
     // customRPC: 'https://rpc.vvs.finance,
   };
 
   // Create a client instance
-  const client = createClient(clientParams);
+  const client = createClient(queryOptions);
   try {
     console.log(`Sending query: "${query}"`);
     const response = await client.agent.generateQuery(query);
@@ -43,7 +44,7 @@ async function sendQuery(query: string) {
 async function runExamples() {
   await sendQuery('Get the latest block number');
   await sendQuery('Get the block at 123');
-  await sendQuery('send 0.01 TCRO to 0xc5bcb6df7d87ff88a03c70506949aab3ffc8580e', CHAIN_ID);
+  await sendQuery('send 0.01 TCRO to 0xc5bcb6df7d87ff88a03c70506949aab3ffc8580e');
 }
 
 runExamples();

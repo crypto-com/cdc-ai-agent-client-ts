@@ -31,6 +31,17 @@ export interface QueryOptions {
   };
   signerAppUrl?: string;
   customRPC?: string;
+  context?: QueryContext[];
+}
+
+export interface QueryContext {
+  role: Role;
+  content: string;
+}
+export enum Role {
+  User = 'user',
+  Assistant = 'assistant',
+  System = 'system',
 }
 
 /**
