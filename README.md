@@ -26,22 +26,15 @@ Here’s how you can use the Crypto.com AI Agent Client in your project:
 ### Configuring the Client
 
 ```ts
-import { createClient } from '@crypto.com/ai-agent-client';
+import { ClientParams, createClient } from '@crypto.com/ai-agent-client';
 
-const client = createClient({
-  openAI: {
-    apiKey: 'YOUR_OPEN_AI_API_KEY',
-  },
-  chain: {
-    id: 'CHAIN_ID', // e.g. 282 for the Cronos ZkEVM Testnet
-    name: 'CHAIN_NAME',
-    rpc: 'CHAIN_RPC_URL',
-  },
-  explorer: {
-    url: 'EXPLORER_API_URL',
-    apiKey: 'EXPLORER_API_KEY',
-  },
-});
+const clientParams: ClientParams = {
+  openAIKey: 'OPEN_AI_API_KEY',
+  chainId: 282, // Cronos ZkEVM Testnet
+  explorerApiKey: 'EXPLORER_API_KEY',
+};
+
+const client = createClient(clientParams);
 ```
 
 ### Sending a Query

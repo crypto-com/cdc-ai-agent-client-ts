@@ -1,11 +1,16 @@
 export interface CdcAiAgentResponse {
-  status: Status;
-  result: {
-    action: string;
-    message: string;
-    data: object;
-  };
+  status: string;
+  message?: string;
+  hasErrors?: boolean;
+  result?: Result;
 }
+
+export type Result = {
+  status: Status;
+  function: string;
+  message: string;
+  data: object;
+};
 
 export enum Status {
   Success = 'Success',
