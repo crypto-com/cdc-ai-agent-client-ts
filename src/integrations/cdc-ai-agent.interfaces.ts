@@ -57,8 +57,8 @@ export enum Method {
       cronosZkEvmKey: CRONOS_ZKEVM_API_KEY,
       cronosZkEvmTestnetKey: CRONOS_ZKEVM_TESTNET_API_KEY,
     },
-    context: [],
     signerAppUrl: 'https://my-signer-app',
+    context: [],
     customRPC: 'https://rpc.vvs.finance, 
   };
 
@@ -76,8 +76,8 @@ export interface QueryOptions {
     cronosZkEvmTestnetKey?: string;
   };
   signerAppUrl?: string;
-  customRPC?: string;
   context?: QueryContext[];
+  customRPC?: string;
 }
 
 export interface QueryContext {

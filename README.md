@@ -40,8 +40,8 @@ const queryOptions: QueryOptions = {
     cronosZkEvmKey: <CRONOS_ZKEVM_API_KEY>,
     cronosZkEvmTestnetKey: <CRONOS_ZKEVM_TESTNET_API_KEY>,
   },
-  context: [], // Optional context for the query. Context can be obtained from the server response.
   signerAppUrl: 'https://my-signer-app',
+  context: [], // Optional context for the query. Context can be obtained from the server response.
 };
 
 const client = createClient(queryOptions);
