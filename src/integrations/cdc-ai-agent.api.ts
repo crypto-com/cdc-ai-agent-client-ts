@@ -1,19 +1,5 @@
 import { ClientError } from '../lib/interfaces/error.interfaces';
 import { CdcAiAgentResponse, Method, QueryOptions } from './cdc-ai-agent.interfaces';
-export interface CdcAiAgentClient {
-  agent: Query;
-}
-
-export type Query = {
-  /**
-   * Sends a query to the CDC Agent AI Service and fetches the AI-generated response.
-   *
-   * @param {string} query - The query string to be sent to the CDC Agent AI Service (e.g., questions or commands related to blockchain).
-   * @returns {Promise<CdcAiAgentResponse>} A promise that resolves to CdcAiAgentResponse
-   *
-   */
-  generateQuery: (query: string) => Promise<CdcAiAgentResponse>;
-};
 
 /**
  * Generates a response by sending a query and options to the CDC AI Agent service using the native fetch API.

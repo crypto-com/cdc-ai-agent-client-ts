@@ -26,15 +26,25 @@ Here’s how you can use the Crypto.com AI Agent Client in your project:
 ### Configuring the Client
 
 ```ts
-import { ClientParams, createClient } from '@crypto.com/ai-agent-client';
+import { QueryOptions, createClient } from '@crypto.com/ai-agent-client';
 
-const clientParams: ClientParams = {
-  openAIKey: 'OPEN_AI_API_KEY',
-  chainId: 282, // Cronos ZkEVM Testnet
-  explorerApiKey: 'EXPLORER_API_KEY',
+const queryOptions: QueryOptions = {
+  openAI: {
+    apiKey: <OPEN_AI_API_KEY>,
+    model: 'gpt-4o',
+  },
+  chainId: 282, // Cronos ZkEVM Testnet,
+  explorerKeys: {
+    cronosMainnetKey: <CRONOS_MAINNET_API_KEY>,
+    cronosTestnetKey: <CRONOS_TESTNET_API_KEY>,
+    cronosZkEvmKey: <CRONOS_ZKEVM_API_KEY>,
+    cronosZkEvmTestnetKey: <CRONOS_ZKEVM_TESTNET_API_KEY>,
+  },
+  context: [], // Optional context for the query. Context can be obtained from the server response.
+  signerAppUrl: 'https://my-signer-app',
 };
 
-const client = createClient(clientParams);
+const client = createClient(queryOptions);
 ```
 
 ### Sending a Query

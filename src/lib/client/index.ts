@@ -1,5 +1,19 @@
-import { CdcAiAgentClient, generateQuery } from '../../integrations/cdc-ai-agent.api';
+import { generateQuery } from '../../integrations/cdc-ai-agent.api';
 import { CdcAiAgentResponse, QueryOptions } from '../../integrations/cdc-ai-agent.interfaces';
+export interface CdcAiAgentClient {
+  agent: Query;
+}
+
+export type Query = {
+  /**
+   * Sends a query to the CDC Agent AI Service and fetches the AI-generated response.
+   *
+   * @param {string} query - The query string to be sent to the CDC Agent AI Service (e.g., questions or commands related to blockchain).
+   * @returns {Promise<CdcAiAgentResponse>} A promise that resolves to CdcAiAgentResponse
+   *
+   */
+  generateQuery: (query: string) => Promise<CdcAiAgentResponse>;
+};
 
 /**
  * Creates a new client for interacting with the CDC Agent AI Service using OpenAI, blockchain, and explorer configurations.
