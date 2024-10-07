@@ -1,48 +1,5 @@
-import { generateQuery, Query } from '../../integrations/cdc-ai-agent.api';
-import { CdcAiAgentResponse } from '../../integrations/cdc-ai-agent.interfaces';
-
-export interface CdcAiAgentClient {
-  agent: Query;
-}
-/**
- * Client params for creating a CDC AI Agent client instance.
- *
- * @interface
- * @property {object} openAI - The API key for OpenAI and the model to use. Defaults to gpt-4-turbo if not provided.
- * @property {number} chainId - The chain number:
- * - 25: cronos
- * - 338: cronos-testnet
- * - 388: cronos-zkevm
- * - 282: cronos-zkevm-testnet
- * @property {object} explorerKeys - The API keys for the respective explorers.
- * @property {string} customRPC - Optional custom RPC URL. If not provided, the default RPC for the chain will be used.
- */
-export interface QueryOptions {
-  openAI: {
-    apiKey: string;
-    model?: string;
-  };
-  chainId: number;
-  explorerKeys: {
-    cronosMainnetKey?: string;
-    cronosTestnetKey?: string;
-    cronosZkEvmKey?: string;
-    cronosZkEvmTestnetKey?: string;
-  };
-  signerAppUrl?: string;
-  customRPC?: string;
-  context?: QueryContext[];
-}
-
-export interface QueryContext {
-  role: Role;
-  content: string;
-}
-export enum Role {
-  User = 'user',
-  Assistant = 'assistant',
-  System = 'system',
-}
+import { CdcAiAgentClient, generateQuery } from '../../integrations/cdc-ai-agent.api';
+import { CdcAiAgentResponse, QueryOptions } from '../../integrations/cdc-ai-agent.interfaces';
 
 /**
  * Creates a new client for interacting with the CDC Agent AI Service using OpenAI, blockchain, and explorer configurations.

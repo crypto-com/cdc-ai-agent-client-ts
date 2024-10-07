@@ -1,25 +1,16 @@
-import { QueryOptions } from '@/lib/client';
 import { ClientError } from '../lib/interfaces/error.interfaces';
-import { CdcAiAgentResponse, Method } from './cdc-ai-agent.interfaces';
+import { CdcAiAgentResponse, Method, QueryOptions } from './cdc-ai-agent.interfaces';
+export interface CdcAiAgentClient {
+  agent: Query;
+}
 
 export type Query = {
   /**
    * Sends a query to the CDC Agent AI Service and fetches the AI-generated response.
    *
    * @param {string} query - The query string to be sent to the CDC Agent AI Service (e.g., questions or commands related to blockchain).
-   * @returns {Promise<{ message: string; object: any }>} A promise that resolves to an object containing the AI-generated message and related data.
+   * @returns {Promise<CdcAiAgentResponse>} A promise that resolves to CdcAiAgentResponse
    *
-   * @example
-   * const client = createClient({ openAI: { apiKey: 'YOUR_OPEN_AI_API_KEY' }, chain: { rpc: 'CHAIN_RPC' }, explorer: { apiKey: 'EXPLORER_API_KEY' }, wallet: { mnemonic: 'YOUR_WALLET_MNEMONIC' } });
-   * async function sendQuery() {
-   *   try {
-   *     const response = await client.agent.generateQuery('What is the latest block?');
-   *     console.log('CDC Agent AI Response:', response.message);
-   *   } catch (e) {
-   *     console.error('Error fetching CDC Agent AI response:', e);
-   *   }
-   * }
-   * sendQuery();
    */
   generateQuery: (query: string) => Promise<CdcAiAgentResponse>;
 };
