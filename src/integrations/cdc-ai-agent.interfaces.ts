@@ -2,7 +2,7 @@ export interface CdcAiAgentResponse {
   status: string;
   message?: string;
   hasErrors?: boolean;
-  result?: Result;
+  results?: Result[];
   context?: QueryContext[];
 }
 
