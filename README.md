@@ -33,7 +33,7 @@ const client = createClient({
     apiKey: 'YOUR_OPEN_AI_API_KEY',
   },
   chain: {
-    id: 'CHAIN_ID', // e.g. 282 for the Cronos ZkEVM Testnet
+    id: 'CHAIN_ID', // e.g. 240 for the Cronos ZkEVM Testnet
     name: 'CHAIN_NAME',
     rpc: 'CHAIN_RPC_URL',
   },
