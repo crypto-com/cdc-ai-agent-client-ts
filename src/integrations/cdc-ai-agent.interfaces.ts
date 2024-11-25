@@ -40,7 +40,7 @@ export enum Method {
  * - 25: cronos
  * - 338: cronos-testnet
  * - 388: cronos-zkevm
- * - 282: cronos-zkevm-testnet
+ * - 240: cronos-zkevm-testnet
  * @property {object} explorerKeys - The API keys for the respective chain number. Server will select the api key according to the chainId.
  * @property {string} signerAppUrl - Optional signer app URL. Refer to: https://github.com/crypto-com/cdc-ai-agent-signer-app
  * @property {string} customRPC - Optional custom RPC URL to override the server's default RPC URL specific to the chainId.
