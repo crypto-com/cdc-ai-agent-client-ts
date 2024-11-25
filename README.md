@@ -33,7 +33,7 @@ const queryOptions: QueryOptions = {
     apiKey: <OPEN_AI_API_KEY>,
     model: 'gpt-4o',
   },
-  chainId: 282, // Cronos ZkEVM Testnet,
+  chainId: 240, // # 25 for Cronos EVM Mainnet, 338 for Cronos EVM Testnet, 388 for Cronos ZkEVM Mainnet, 240 for Cronos ZkEVM Testnet
   explorerKeys: {
     cronosMainnetKey: <CRONOS_MAINNET_API_KEY>,
     cronosTestnetKey: <CRONOS_TESTNET_API_KEY>,
