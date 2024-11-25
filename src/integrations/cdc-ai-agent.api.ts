@@ -1,34 +1,29 @@
-import { CdcAiAgentResponse, Method } from './cdc-ai-agent.interfaces';
+import { ClientError } from '../lib/interfaces/error.interfaces';
+import { CdcAiAgentResponse, Method, QueryOptions } from './cdc-ai-agent.interfaces';
 
 /**
  * Generates a response by sending a query and options to the CDC AI Agent service using the native fetch API.
  *
  * @param {string} query - The query string to send.
- * @param {object} options - The options object containing API keys, chain info, etc.
+ * @param {QueryOptions} options - The options object containing API keys, chain info, etc.
  * @returns {Promise<CdcAiAgentResponse>} - The response from the CDC AI Agent service.
  */
-export const generateQuery = async (query: string, options: object): Promise<CdcAiAgentResponse> => {
+export const generateQuery = async (query: string, options: QueryOptions): Promise<CdcAiAgentResponse> => {
   const url = 'https://ai-agent-api.crypto.com/api/v1/cdc-ai-agent-service/query';
   const payload = { query, options };
 
-  try {
-    const response = await fetch(url, {
-      method: Method.POST,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
+  const response = await fetch(url, {
+    method: Method.POST,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data: CdcAiAgentResponse = await response.json();
-    return data;
-  } catch (e) {
-    const error = e as Error;
-    console.error(`[cdcAiAgent/generateResponse] - ${error.message}`);
-    throw new Error(`Failed to generate response: ${error.message}`);
+  const data: CdcAiAgentResponse = await response.json();
+  if (!response.ok) {
+    throw new ClientError(`Generate query failed with status ${response.status}:`, data);
   }
+
+  return data;
 };
